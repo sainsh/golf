@@ -1,2 +1,10 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+<form method="POST" action="/" enctype="multipart/form-data">
+<input type="file" name="pic">
+<input type="submit" value="Check Image">
+</form>
+<form method="POST" action="/pic/">
+<input type="submit" value="Take Picture">
+</form>
+<p>The dominant color of the image is: {{color}}</p>
