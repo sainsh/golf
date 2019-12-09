@@ -14,6 +14,31 @@ const myCamera = new PiCamera({
   height: 480,
   nopreview: true,
 });
+const path = require('path');
+const MotionDetectionModule = require('pi-motion-detection');
+const motionDetector = new MotionDetectionModule({
+  captureDirectory: path.resolve(__dirname),
+});
+
+motionDetector.on('motion', () => {
+  console.log('motion!');
+  myCamera.snap()
+  .then(async(result) => {
+    var color = await colorReg.findColor(__dirname + '/test.jpg');
+    console.log(color);
+    fs.unlinkSync(__dirname + '/test.jpg');
+    res.render('index', {title: 'ColorReg', color: color})
+  })
+  .catch((error) => {
+     // Handle your error
+  });
+});
+ 
+motionDetector.on('error', (error) => {
+  console.log(error);
+});
+ 
+motionDetector.watch();
 
 
 /* GET home page. */
