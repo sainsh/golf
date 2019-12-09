@@ -27,7 +27,7 @@ motionDetector.on('motion', () => {
     var color = await colorReg.findColor(__dirname + '/test.jpg');
     console.log(color);
     fs.unlinkSync(__dirname + '/test.jpg');
-    res.render('index', {title: 'ColorReg', color: color})
+    //res.render('index', {title: 'ColorReg', color: color})
   })
   .catch((error) => {
      // Handle your error
