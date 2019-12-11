@@ -14,15 +14,15 @@ module.exports.findColor = async (path) => {
     console.log(palette)
     for (var i = 0; i < palette.length; i++) {
         var color = palette[i];
-        if (color[0] > color[1] && color[0] > color[2]) {
-            redCount++;
-        } else if (color[1] > color[0] && color[1] > color[2]) {
-            greenCount++;
-        } else if (color[2] > color[0] && color[2] > color[1]) {
-            blueCount++;
-        }
+        redCount += color[0];
+        greenCount += color[1];
+        blueCount += color[2]
 
     }
+    redCount /= 5;
+    greenCount /= 5;
+    blueCount /= 5;
+
     console.log(`red: ${redCount}. green: ${greenCount}. blue: ${blueCount}.`)
     if (redCount > greenCount && redCount > blueCount) {
         console.log("red");
